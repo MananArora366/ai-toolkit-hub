@@ -25,6 +25,18 @@ Roughly 1,700 lines of Python across `models/`, `services/`, `database/` and
 
 ---
 
+## 📸 Screenshots
+
+| Executive Overview & Metrics | Incident & Ticket Analytics |
+| :---: | :---: |
+| ![Executive Overview](assets/screenshots/ai-toolkit-home.png) | ![Incident Analytics](assets/screenshots/ai-toolkit-analytics.png) |
+
+| Operational Security Dashboard | Multi-Domain Authentication |
+| :---: | :---: |
+| ![Security Dashboard](assets/screenshots/ai-toolkit-dashboard.png) | ![Login Screen](assets/screenshots/ai-toolkit-login.png) |
+
+---
+
 ## 📁 Structure
 
 ```text
