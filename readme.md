@@ -4,8 +4,8 @@ A multi-page Streamlit application with user authentication, a SQLite-backed
 incident and ticket store, Plotly analytics, and an LLM assistant that works
 against OpenAI or any OpenAI-compatible gateway.
 
-Roughly 1,700 lines of Python across `models/`, `services/`, `database/` and
-`pages/`.
+Just under 2,000 lines of Python: about 1,500 across `models/`, `services/`,
+`database/` and `pages/`, plus the Streamlit entrypoint.
 
 ---
 
