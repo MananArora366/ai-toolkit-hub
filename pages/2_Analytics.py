@@ -26,13 +26,15 @@ with st.sidebar:
 
 st.title("Analytics & Reporting")
 
-# Initialize OpenAI client
+# Initialize API client
 try:
-    api_key = st.secrets.get("OPENAI_API_KEY", "")
-    base_url = st.secrets.get("OPENAI_BASE_URL", "https://api.openai.com/v1")
+    api_key = st.secrets.get("NVIDIA_API_KEY") or st.secrets.get("OPENAI_API_KEY") or st.secrets.get("LLM_API_KEY", "")
+    is_nvidia = bool(st.secrets.get("NVIDIA_API_KEY") or (api_key and api_key.startswith("nvapi-")))
+    default_base_url = "https://integrate.api.nvidia.com/v1" if is_nvidia else "https://api.openai.com/v1"
+    base_url = st.secrets.get("NVIDIA_BASE_URL") or st.secrets.get("OPENAI_BASE_URL", default_base_url)
 except Exception:
     api_key = "mock_key"
-    base_url = "https://api.openai.com/v1"
+    base_url = "https://integrate.api.nvidia.com/v1"
 client = OpenAI(api_key=api_key or "mock_key", base_url=base_url)
 
 def load_csv_data():

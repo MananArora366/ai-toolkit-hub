@@ -66,13 +66,14 @@ CANDIDATES = [
 
 
 def load_api_key() -> str:
-    """Read OPENAI_API_KEY out of .streamlit/secrets.toml."""
+    """Read NVIDIA_API_KEY or OPENAI_API_KEY out of .streamlit/secrets.toml."""
     path = pathlib.Path(__file__).resolve().parent / ".streamlit" / "secrets.toml"
     if not path.is_file():
         sys.exit(f"secrets.toml not found at {path}")
-    match = re.search(r'OPENAI_API_KEY\s*=\s*"([^"]+)"', path.read_text(encoding="utf-8"))
+    text = path.read_text(encoding="utf-8")
+    match = re.search(r'(?:NVIDIA_API_KEY|OPENAI_API_KEY|LLM_API_KEY)\s*=\s*"([^"]+)"', text, re.IGNORECASE)
     if not match:
-        sys.exit("OPENAI_API_KEY not found in secrets.toml")
+        sys.exit("NVIDIA_API_KEY or OPENAI_API_KEY not found in secrets.toml")
     return match.group(1)
 
 
